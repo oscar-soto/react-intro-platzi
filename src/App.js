@@ -35,7 +35,7 @@ function App() {
   const onDelete = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex((todo) => todo.text === text);
-    newTodos.splice(todoIndex, 1)
+    newTodos.splice(todoIndex, 1);
     setTodos(newTodos);
   };
 
