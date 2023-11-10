@@ -2,7 +2,7 @@ import './EmptyTodos.css';
 
 function EmptyTodos() {
   return (
-    <p>Agrega todos</p>
+    <p>Crea tu primer todo</p>
   );
 }
 
