@@ -4,14 +4,19 @@ import { useLocalStorage } from "../App/useLocalStorage";
 const TodoContext = createContext();
 
 const TodoProvider = ({ children }) => {
+  // Local Storage
   const {
     item: todos,
     saveItem: saveTodos,
     loading,
     error,
   } = useLocalStorage("TODOS_V1", []);
-  const [searchValue, setSearchValue] = useState("");
 
+  // States
+  const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false)
+  
+  // Functions
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
 
@@ -45,7 +50,9 @@ const TodoProvider = ({ children }) => {
         totalTodos,
         searchValue,
         searchedTodos,
+        openModal,
         setSearchValue,
+        setOpenModal,
         onComplete,
         onDelete,
       }}

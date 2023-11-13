@@ -1,14 +1,19 @@
-import { TodoCounter } from "../TodoCounter";
-import { TodoSearch } from "../TodoSearch";
-import { TodoList } from "../TodoList";
-import { TodoItem } from "../TodoItem";
-import { CreateTodoButton } from "../CreateTodoButton";
-import { TodosLoading } from "../TodosLoading";
-import { TodosError } from "../TodosError";
-import { EmptyTodos } from "../EmptyTodos";
-import { TodoContext } from "../TodoContext";
+import { useContext } from 'react';
+
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem';
+import { CreateTodoButton } from '../CreateTodoButton';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { EmptyTodos } from '../EmptyTodos';
+import { TodoContext } from '../TodoContext';
+import { Modal } from '../Modal';
 
 function AppUI() {
+  const {openModal, setOpenModal} = useContext(TodoContext);
+  
   return (
     <>
       <TodoCounter />
@@ -16,7 +21,7 @@ function AppUI() {
       <TodoSearch />
 
       <TodoContext.Consumer>
-        {({loading, error, searchedTodos, onComplete, onDelete}) => (
+        {({ loading, error, searchedTodos, onComplete, onDelete }) => (
           <TodoList>
             {loading ? (
               <>
@@ -44,7 +49,9 @@ function AppUI() {
         )}
       </TodoContext.Consumer>
 
-      <CreateTodoButton />
+      <CreateTodoButton setOpenModal={setOpenModal} />
+
+      {openModal && <Modal>La funcionalidad de agregar todos</Modal>}
     </>
   );
 }
