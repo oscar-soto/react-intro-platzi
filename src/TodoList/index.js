@@ -1,20 +1,29 @@
 function TodoList({
+  children,
   error,
   loading,
-  searchedTodos,
+  onEmptySearchTreults,
+  onEmptyTodos,
   onError,
   onLoading,
-  onEmptyTodos,
   render,
+  searchedTodos,
+  searchText,
+  totalTodos,
 }) {
-  console.log(onError);
+  const renderFunc = children || render;
+
   return (
     <section className="TodoList-Container">
       {error && onError()}
       {loading && onLoading()}
-      {!loading && !searchedTodos?.length && onEmptyTodos()}
+      {!totalTodos && !loading && !searchedTodos?.length && onEmptyTodos()}
 
-      {searchedTodos.map(render)}
+      {!!totalTodos &&
+        !searchedTodos?.length &&
+        onEmptySearchTreults(searchText)}
+
+      {searchedTodos.map(renderFunc)}
     </section>
   );
 }
