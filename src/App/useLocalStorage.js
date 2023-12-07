@@ -27,7 +27,7 @@ function useLocalStorage(itemName, initialValue) {
         setError(error);
       }
     }, 2000);
-  }, []);
+  }, [initialValue, itemName]);
 
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
@@ -40,25 +40,6 @@ function useLocalStorage(itemName, initialValue) {
     error,
     saveItem,
   };
-
-  // const [todos, setTodos] = useState(() => {
-  //   const localStorageTodo = localStorage.getItem('TODOS_V1');
-  //   const parsedTodos = JSON.parse(localStorageTodo);
-
-  //   return parsedTodos || [];
-  // });
-
-  // const saveTodos = (newTodos) => {
-  //   localStorage.setItem('TODOS_V1', JSON.stringify(newTodos))
-  //   setTodos(newTodos)
-  // };
-
-  // useEffect(() => {
-  //   const localStorageTodo = localStorage.getItem('TODOS_V1');
-  //   const parsedTodos = JSON.parse(localStorageTodo);
-
-  //   setTodos(parsedTodos);
-  // }, []);
 }
 
 export { useLocalStorage };
