@@ -1,15 +1,15 @@
-import useTodos from "./useTodos";
-import { TodoHeader } from "../TodoHeader";
-import { TodoCounter } from "../TodoCounter";
-import { TodoSearch } from "../TodoSearch";
-import { TodoList } from "../TodoList";
-import { TodoItem } from "../TodoItem";
-import { TodosError } from "../TodosError";
-import { TodosLoading } from "../TodosLoading";
-import { EmptyTodos } from "../EmptyTodos";
-import { TodoForm } from "../TodoForm";
-import { CreateTodoButton } from "../CreateTodoButton";
-import { Modal } from "../Modal";
+import useTodos from './useTodos';
+import { TodoHeader } from '../TodoHeader';
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem';
+import { TodosError } from '../TodosError';
+import { TodosLoading } from '../TodosLoading';
+import { EmptyTodos } from '../EmptyTodos';
+import { TodoForm } from '../TodoForm';
+import { CreateTodoButton } from '../CreateTodoButton';
+import { Modal } from '../Modal';
 
 function App() {
   const {
@@ -29,9 +29,17 @@ function App() {
 
   return (
     <>
-      <TodoHeader>
-        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
-        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoHeader loading={loading}>
+        <TodoCounter
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+          // loading={loading}
+        />
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          // loading={loading}
+        />
       </TodoHeader>
 
       <TodoList
@@ -46,7 +54,6 @@ function App() {
         onEmptySearchTreults={(searchText) => (
           <p>No hay resultados para {searchText}</p>
         )}
-        
         render={(todo) => (
           <TodoItem
             key={todo.text}
@@ -57,8 +64,6 @@ function App() {
           />
         )}
       />
-
-      
 
       {!!openModal && (
         <Modal>
