@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { useState } from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
 const useTodos = () => {
   // Local Storage
@@ -8,10 +8,11 @@ const useTodos = () => {
     saveItem: saveTodos,
     loading,
     error,
-  } = useLocalStorage("TODOS_V1", []);
+    sincronizeItem: sincronizeTodos,
+  } = useLocalStorage('TODOS_V1', []);
 
   // States
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [openModal, setOpenModal] = useState(false);
 
   // Functions
@@ -61,6 +62,7 @@ const useTodos = () => {
     onComplete,
     onDelete,
     onAddTodo,
+    sincronizeTodos,
   };
 };
 export default useTodos;
