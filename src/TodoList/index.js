@@ -17,13 +17,14 @@ function TodoList({
     <section className="TodoList-Container">
       {error && onError()}
       {loading && onLoading()}
+
       {!totalTodos && !loading && !searchedTodos?.length && onEmptyTodos()}
 
       {!!totalTodos &&
         !searchedTodos?.length &&
         onEmptySearchTreults(searchText)}
 
-      {searchedTodos.map(renderFunc)}
+      {!loading && !error && searchedTodos.map(renderFunc)}
     </section>
   );
 }
