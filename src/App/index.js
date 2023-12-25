@@ -13,6 +13,8 @@ import { Modal } from '../Modal';
 import { ChangeAlert } from '../ChangeAlert';
 
 function App() {
+  const { states, stateUpdaters } = useTodos();
+
   const {
     loading,
     error,
@@ -21,13 +23,16 @@ function App() {
     searchValue,
     searchedTodos,
     openModal,
+  } = states;
+
+  const {
     setOpenModal,
     setSearchValue,
     onComplete,
     onDelete,
     onAddTodo,
     sincronizeTodos,
-  } = useTodos();
+  } = stateUpdaters;
 
   return (
     <>

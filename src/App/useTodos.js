@@ -49,7 +49,7 @@ const useTodos = () => {
     saveTodos(newTodos);
   };
 
-  return {
+  const states = {
     loading,
     error,
     completedTodos,
@@ -57,12 +57,21 @@ const useTodos = () => {
     searchValue,
     searchedTodos,
     openModal,
+  }
+
+  const stateUpdaters = {
+
     setSearchValue,
     setOpenModal,
     onComplete,
     onDelete,
     onAddTodo,
     sincronizeTodos,
+  }
+
+  return {
+    states,
+    stateUpdaters
   };
 };
 export default useTodos;
